@@ -58,13 +58,18 @@ void setup() {
   vertices[5] = new PVector(50, 50, -50);
   vertices[6] = new PVector(50, -50, -50);
   vertices[7] = new PVector(-50, -50, -50);
+  
+  float [][] Rx = RotacionX(radians(20));
+  for(int k = 0; k < 8 ; k++) {
+    vertices[k] = Rotar(Rx, vertices[k]);  
+  }
 }
 
 void draw() {
   background(200);
   translate(256, 256);
   float t = millis()/1000.0;
-  float [][] Rz = RotacionZ(t);
+  float [][] Rz = RotacionY(-t);
   for(PVector p3D: vertices) {
     PVector p3Dr = Rotar(Rz,p3D);
     PVector p2D = Proyectar(P, p3Dr);
