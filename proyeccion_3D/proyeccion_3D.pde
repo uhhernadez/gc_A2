@@ -22,11 +22,11 @@ void setup() {
   vertices[4] = new PVector(-50, 50, -50);
   vertices[5] = new PVector(50, 50, -50);
   vertices[6] = new PVector(50, -50, -50);
-  vertices[6] = new PVector(-50, -50, -50);
-  
+  vertices[7] = new PVector(-50, -50, -50);
 }
 
 void draw() {
+  translate(256, 256);
   for(PVector p3D: vertices) {
     PVector p2D = Proyectar(P, p3D);
     ellipse(p2D.x, p2D.y, 10, 10);
