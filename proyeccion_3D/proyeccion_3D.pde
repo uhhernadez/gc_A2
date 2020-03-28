@@ -83,18 +83,22 @@ void draw() {
 
 void DibujarCubo2D(ArrayList<PVector> puntos) {
   // P1P2
-  line(puntos.get(0).x, puntos.get(0).y, puntos.get(1).x, puntos.get(1).y);
-  line(puntos.get(1).x, puntos.get(1).y, puntos.get(2).x, puntos.get(2).y);
-  line(puntos.get(2).x, puntos.get(2).y, puntos.get(3).x, puntos.get(3).y);
-  line(puntos.get(0).x, puntos.get(0).y, puntos.get(3).x, puntos.get(3).y);
+  Linea2D(puntos.get(0), puntos.get(1));
+  Linea2D(puntos.get(1), puntos.get(2));
+  Linea2D(puntos.get(2), puntos.get(3));
+  Linea2D(puntos.get(0), puntos.get(3));
   
-  line(puntos.get(4).x, puntos.get(4).y, puntos.get(5).x, puntos.get(5).y);
-  line(puntos.get(5).x, puntos.get(5).y, puntos.get(6).x, puntos.get(6).y);
-  line(puntos.get(6).x, puntos.get(6).y, puntos.get(7).x, puntos.get(7).y);
-  line(puntos.get(7).x, puntos.get(7).y, puntos.get(4).x, puntos.get(4).y);
+  Linea2D(puntos.get(4), puntos.get(5));
+  Linea2D(puntos.get(5), puntos.get(6));
+  Linea2D(puntos.get(6), puntos.get(7));
+  Linea2D(puntos.get(7), puntos.get(4));
   
-  line(puntos.get(0).x, puntos.get(0).y, puntos.get(4).x, puntos.get(4).y);
-  line(puntos.get(1).x, puntos.get(1).y, puntos.get(5).x, puntos.get(5).y);
-  line(puntos.get(2).x, puntos.get(2).y, puntos.get(6).x, puntos.get(6).y);
-  line(puntos.get(3).x, puntos.get(3).y, puntos.get(7).x, puntos.get(7).y);
+  Linea2D(puntos.get(0), puntos.get(4));
+  Linea2D(puntos.get(1), puntos.get(5));
+  Linea2D(puntos.get(2), puntos.get(6));
+  Linea2D(puntos.get(3), puntos.get(7));
+}
+
+void Linea2D(PVector a, PVector b) {
+  line(a.x, a.y, b.x, b.y);
 }
