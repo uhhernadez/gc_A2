@@ -70,9 +70,18 @@ void draw() {
   translate(256, 256);
   float t = millis()/1000.0;
   float [][] Rz = RotacionY(-t);
+  //PVector [] cubo_2D = new PVector[8];
+  ArrayList<PVector> cubo_2D = new ArrayList(); 
   for(PVector p3D: vertices) {
     PVector p3Dr = Rotar(Rz,p3D);
     PVector p2D = Proyectar(P, p3Dr);
+    cubo_2D.add(p2D);
     ellipse(p2D.x, p2D.y, 10, 10);
-  }
+  } 
+  DibujarCubo2D(cubo_2D);
+}
+
+void DibujarCubo2D(ArrayList<PVector> puntos) {
+  // P1P2
+  line(puntos.get(0).x, puntos.get(0).y, puntos.get(1).x, puntos.get(1).y);
 }
