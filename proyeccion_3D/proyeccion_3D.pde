@@ -11,6 +11,14 @@ PVector Proyectar(float [][]P, PVector p) {
   return new PVector(x,y);
 }
 
+PVector Proyectar(float [][]P, PVector p, float d) {
+  float x,y;
+  x = P[0][0] * p.x + P[0][1] * p.y + P[0][2] * p.z;
+  y = P[1][0] * p.x + P[1][1] * p.y + P[1][2] * p.z;
+  float alpha = d/p.z;
+  return new PVector(alpha*x,alpha*y);
+}
+
 PVector Rotar(float [][] R, PVector p){
   float x, y, z;
   x = R[0][0] * p.x + R[0][1] * p.y + R[0][2] * p.z;
@@ -69,12 +77,15 @@ void draw() {
   background(200);
   translate(256, 256);
   float t = millis()/1000.0;
-  float [][] Rz = RotacionY(-t);
+  //float [][] Rz = RotacionY(-t);
+  float [][] Rz = RotacionY(0);
   //PVector [] cubo_2D = new PVector[8];
   ArrayList<PVector> cubo_2D = new ArrayList(); 
+  float d = 100;
   for(PVector p3D: vertices) {
-    PVector p3Dr = Rotar(Rz,p3D);
-    PVector p2D = Proyectar(P, p3Dr);
+    //PVector p3Dt = PVector.add(p3D, new PVector(0, 0, 10*t));
+    //PVector p3Dr = Rotar(Rz,p3D);
+    PVector p2D = Proyectar(P, p3D, d);
     cubo_2D.add(p2D);
     ellipse(p2D.x, p2D.y, 10, 10);
   } 
