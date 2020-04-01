@@ -74,28 +74,35 @@ void setup() {
 }
 
 
-float z = 200;
+
 void draw() {
   background(200);
-  translate(256, 256);
+  translate(200, 256);
   float t = millis()/1000.0;
   //float [][] Rz = RotacionY(-t);
   //float [][] Rx = RotacionX(t);
   //float [][] Ry = RotacionY(t);
   float [][] Rz = RotacionZ(t);
   //PVector [] cubo_2D = new PVector[8];
-  ArrayList<PVector> cubo_2D = new ArrayList(); 
-  float d = 100;  
+  ArrayList<PVector> cubo_2D = new ArrayList();
+  ArrayList<PVector> cubo_2D_ortografica = new ArrayList();
+  float d = 100; 
+  float tx = 150;
   for(PVector p3D: vertices) {
     PVector p3Dr = Rotar(Rz,p3D);
-    PVector p3Dt = PVector.add(p3Dr, new PVector(0, 0, z));
+    PVector p3Dt = PVector.add(p3Dr, new PVector(0, 0, 200));
+    // Perspectiva
     PVector p2D = Proyectar(P, p3Dt, d);
-    //PVector p2D = Proyectar(P, p3Dt);
     cubo_2D.add(p2D);
     ellipse(p2D.x, p2D.y, 10, 10);
+    // Ortográfica
+    p2D = Proyectar(P, p3Dt);
+    cubo_2D_ortografica.add(p2D);
+    ellipse(p2D.x+tx, p2D.y, 10, 10);
   } 
   DibujarCubo2D(cubo_2D);
-  z -= 0.1;
+  translate(tx, 0);
+  DibujarCubo2D(cubo_2D_ortografica);
 }
 
 void DibujarCubo2D(ArrayList<PVector> puntos) {
