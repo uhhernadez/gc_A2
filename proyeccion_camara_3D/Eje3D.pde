@@ -1,5 +1,4 @@
-class Eje3D {
-  
+class Eje3D {  
   Eje3D() {
   
   }
