@@ -1,5 +1,6 @@
 // Geometría Computacional
 //
+ArrayList<PVector> helice;
 Eje3D eje;
 PShape modelo;
 boolean flag;
@@ -14,9 +15,17 @@ void setup() {
 void draw() {
   background(200);
   lights();
-  camera(150, 150, 150,
+  float A = 100;
+  float m = 10;
+  float t = 0.5 * (millis()/1000.0);
+  float xc = A * cos(t);
+  float yc = A * sin(t);
+  float zc = m * t;
+  
+  camera(xc, yc, zc,
          0, 0, 0,
          0, 0, -1);
+  
   eje.Dibujar();   
   if(flag) {
     float fov = PI/3.0;
