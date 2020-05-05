@@ -17,7 +17,7 @@ class Bezier {
   void Dibujar() {
     noFill();
     beginShape();
-    for(float t = 0.0f; t < 1.0; t += dt_) {
+    for(float t = 0.0f; (1.0 - t) >= -0.001; t += dt_) {
       float a = (1 -t) * (1 -t) * (1 -t); // pow(1-t,3)
       float b = 3 * t * (1 - t) *(1 - t);
       float c = 3 * t * t * (1 - t);
