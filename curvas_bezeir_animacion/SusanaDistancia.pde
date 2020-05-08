@@ -17,12 +17,17 @@ class SusanaDistancia {
 
   void Dibujar() {
     pushMatrix();
-    image(cabeza, -cabeza.width/2.0, -612);
-    image(brazo_izq, 50, -200);
-    image(brazo_der, -50-brazo_der.width, -200);
-    image(pierna_izq, 10, 180);
-    image(pierna_der, -10-pierna_der.width, 180);
-    image(cuerpo, -cuerpo.width/2.0, -cuerpo.height/2.0);
+      scale(0.2);
+      pushMatrix();
+      image(cabeza, -cabeza.width/2.0, -612);
+      
+      image(brazo_izq, 50, -200);
+      
+      image(brazo_der, -50-brazo_der.width, -200);
+      image(pierna_izq, 10, 180);
+      image(pierna_der, -10-pierna_der.width, 180);
+      image(cuerpo, -cuerpo.width/2.0, -cuerpo.height/2.0);
+      popMatrix();
     popMatrix();
   }
 }
