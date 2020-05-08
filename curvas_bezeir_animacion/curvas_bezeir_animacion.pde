@@ -4,7 +4,7 @@ int t;
 void setup() {
   size(1000, 1000);
   susana  = new SusanaDistancia();
-  b = new Bezier(0.005);
+  b = new Bezier(0.001);
   t = 0;
   b.p0_.set(-300, -300);
   b.p1_.set(-300, -300);
