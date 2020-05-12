@@ -16,15 +16,15 @@ void draw() {
   background(240);
   translate(width/2.0, height/2.0);
   b.Calcular();
-  b.Dibujar();
+ // b.Dibujar();
   t = t % b.curva.size();
   PVector p0 = b.curva.get(t);
   int tn = ( t+1 > b.curva.size() - 1)? t : t+1; 
   PVector p1 = b.curva.get(tn);
   
   float theta = Orientacion(p0, p1);
-  translate(p0.x, p0.y);
-  rotate(theta);
+  //translate(p0.x, p0.y);
+  //rotate(theta);
   susana.Dibujar();
   b.p1_.y += 0.1;
   t++;
