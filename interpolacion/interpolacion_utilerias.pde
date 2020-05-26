@@ -2,6 +2,31 @@ float step(float x0, float x1, float t) {
   return (t > 0.5f)? x1: x0;
 }
 
+float linear(float x0, float x1, float t) {
+  float x = x0 + t * (x1 - x0);
+  return (t >1.0)? x1 : x;
+}
+
+float cosine(float x0, float x1, float t) {
+  float x = linear(x0, x1, -cos(PI*t)/2.0f + 0.5f); 
+  return (t >1.0)? x1 : x; 
+}
+
+float smooth_step(float x0, float x1, float t) {
+  float x = linear(x0, x1, t * t * (3 - 2*t)); 
+  return (t >1.0)? x1 : x; 
+}
+
+float acceleration(float x0, float x1, float t) {
+  float x = linear(x0, x1, t*t); 
+  return (t >1.0)? x1 : x; 
+}
+
+float deceleration(float x0, float x1, float t) {
+  float x = linear(x0, x1, 1 - pow((1 - t), 2)); 
+  return (t >1.0)? x1 : x; 
+}
+
 void draw_method(float x0, float x1, float x, float y, String method) {
   noFill();
   circle(x0, y, 20);
@@ -10,5 +35,5 @@ void draw_method(float x0, float x1, float x, float y, String method) {
   circle(x, y, 20);
   textSize(18);
   fill(50);
-  text(method, x0-50, y);
+  text(method, x0-80, y);
 }
