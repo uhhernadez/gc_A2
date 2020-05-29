@@ -4,7 +4,7 @@ void setup() {
 
 void draw(){
   translate(500, 500);
-  problema5(50,20);
+  problema5(100,30);
 }
 
 void problema5(float r0, float r) {
